@@ -16,7 +16,7 @@ public class Converter {
         System.out.println("140 rubles are " + euro + " euro.");
         int dollar = Converter.rubleToDollar(180);
         System.out.println("180 rubley are " + dollar + " dollar.");
-        // Тестирование программы
+    /*    // Тестирование программы
         int in1 = 140; // тест входные данные
         int expected1 = 2;   //тест ожидаемое значение
         int out1 = rubleToEuro(in1); // тест результат работы проги
@@ -26,6 +26,6 @@ public class Converter {
         int expected2 = 3;   //тест ожидаемое значение
         int out2 = rubleToDollar(in2); // тест результат работы проги
         boolean passed2 = expected2 == out2;
-        System.out.println("Тест 2 - " + passed2);
+        System.out.println("Тест 2 - " + passed2);  */
     }
 }
