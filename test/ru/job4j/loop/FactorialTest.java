@@ -9,7 +9,7 @@ import static org.junit.Assert.assertThat;
 
 public class FactorialTest {
     @Test
-    public void whenCalculateFactorialForFiveThenOneHundreedTwenty() {
+    public void whenCalculateFactorialForFiveThenOneHundredTwenty() {
         int rsl = Factorial.calc(5);
         int expected = 120;
         assertThat(rsl, Matchers.is(expected));
