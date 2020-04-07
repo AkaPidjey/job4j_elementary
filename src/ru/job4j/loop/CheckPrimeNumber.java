@@ -7,9 +7,11 @@ public class CheckPrimeNumber {
                 prime = false;
             } else if (number == 2) {
                 prime = true;
+            } else if (number == 3) {
+                prime = true;
             }
         for (int a = 2; a < number; a++) {
-             if (number % 2 == 0) {
+             if (number % 2 == 0 || number % 3 == 0) {
                 prime = false;
                 break;
              }
