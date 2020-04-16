@@ -7,6 +7,22 @@ import ru.job4j.calculator.Fit;
 import static org.junit.Assert.*;
 
 public class PointTest {
+    @Test
+    public void distanceRavno2() {
+        Point a = new Point(0, 0);
+        Point b = new Point(0, 2);
+        double expected = 2.0;
+        double out = a.distance(b);
+        Assert.assertEquals(expected, out, 0.01);
+    }
+    @Test
+    public void distanceRavno5() {
+        Point a = new Point(2, 2);
+        Point b = new Point(-2, -2);
+        double expected = 5.65;
+        double out = a.distance(b);
+        Assert.assertEquals(expected, out, 0.01);
+    }
 
   /*  @Test
     public void distanceRavno5() {
