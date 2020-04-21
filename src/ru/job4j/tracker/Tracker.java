@@ -17,6 +17,7 @@ public class Tracker {
     /**
      * Метод добавления заявки в хранилище
      * @param item новая заявка
+     * @return item новую созданную заявку
      */
     public Item add(Item item) {
         item.setId(generateId());
@@ -41,17 +42,16 @@ public class Tracker {
      * @return обрезанный массив namesWithoutNull.
      */
     public Item[] findAll() {
-        Item[] namesWithoutNull = new Item[items.length];
+        Item[] namesWithoutNull = new Item[position];
         int size = 0;
-        for (int index = 0; index < items.length; index++) {
+        for (int index = 0; index < position; index++) {
             Item item = items[index];
             if (item != null) {
                 namesWithoutNull[size] = item;
                 size++;
             }
         }
-        namesWithoutNull = Arrays.copyOf(namesWithoutNull, size);
-        return namesWithoutNull;
+        return Arrays.copyOf(namesWithoutNull, size);
     }
 
     /**
@@ -62,23 +62,22 @@ public class Tracker {
      * @return обрезанный массив namesEqualsKey.
      */
     public Item[] findByName(String key) {
-        Item[] namesEqualsKey = new Item[items.length];
+        Item[] namesEqualsKey = new Item[position];
         int size = 0;
-        for (int index = 0; index < items.length; index++) {
+        for (int index = 0; index < position; index++) {
             Item item = items[index];
             if (item.getName().equals(key)) {
                 namesEqualsKey[size] = item;
                 size++;
             }
         }
-        namesEqualsKey = Arrays.copyOf(namesEqualsKey, size);
         return namesEqualsKey;
     }
 
     /**
      * Метод public Item findById(String id) проверяет в цикле все элементы массива this.items,
      * сравнивая id с аргументом String id и возвращает найденный Item. Если Item не найден - возвращает null.
-     * @return возвращает найденный Item.
+     * @return возвращает найденный Item или 0, если значение не найдено.
      */
     public Item findById(String id) {
         Item tmp = new Item();
@@ -87,8 +86,22 @@ public class Tracker {
             if (item.getId().equals(id)) {
                 tmp = item;
                 break;
+            } else {
+                tmp = null;
             }
         }
         return tmp;
+    }
+
+    public Item[] getItems() {
+        return items;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
     }
 }
