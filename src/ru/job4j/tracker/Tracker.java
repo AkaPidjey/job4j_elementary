@@ -39,19 +39,10 @@ public class Tracker {
     /**
      * Метод для получения всех заявок.
      * Метод public Item[] findAll() возвращает копию массива this.items без null элементов (без пустых клеток)
-     * @return обрезанный массив namesWithoutNull.
+     * @return копию обрезанного массива items.
      */
     public Item[] findAll() {
-        Item[] namesWithoutNull = new Item[position];
-        int size = 0;
-        for (int index = 0; index < position; index++) {
-            Item item = items[index];
-            if (item != null) {
-                namesWithoutNull[size] = item;
-                size++;
-            }
-        }
-        return Arrays.copyOf(namesWithoutNull, size);
+        return Arrays.copyOf(items, position);
     }
 
     /**
