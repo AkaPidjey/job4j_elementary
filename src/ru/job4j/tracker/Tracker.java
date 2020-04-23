@@ -122,6 +122,27 @@ public class Tracker {
         return result;
     }
 
+    /**
+     * Метод для удаления заявки.
+     * public boolean delete(String id) находит заявку по id и удаляет ее. Потом перезаписывает массив таким образом,
+     * чтобы пустая ячейка перезаписалась в конец массива.
+     * Если id не найден метод возвращает false и сообщение об этом.
+     * @return result
+     */
+    public boolean delete(String id) {
+        boolean result = true;
+        int index = indexOf(id);
+        if (index != -1) {
+            System.arraycopy(items, (index + 1), items, index, (position - index));
+            items[position - 1] = null;
+            position--;
+        } else {
+            result = false;
+            System.out.println("Записи с данным id не найдено");
+        }
+        return result;
+    }
+
     public Item[] getItems() {
         return items;
     }
