@@ -62,7 +62,7 @@ public class Tracker {
                 size++;
             }
         }
-        return namesEqualsKey;
+        return Arrays.copyOf(namesEqualsKey, size);
     }
 
     /**
@@ -71,14 +71,11 @@ public class Tracker {
      * @return возвращает найденный Item или 0, если значение не найдено.
      */
     public Item findById(String id) {
-        Item tmp = new Item();
-        for (int index = 0; index < items.length; index++) {
-            Item item = items[index];
-            if (item.getId().equals(id)) {
-                tmp = item;
+        Item tmp = null;
+        for (int index = 0; index < position; index++) {
+            if (items[index].getId().equals(id)) {
+                tmp = items[index];
                 break;
-            } else {
-                tmp = null;
             }
         }
         return tmp;
