@@ -20,12 +20,17 @@ public class Item {
         return Objects.hash(id, name);
     }
 
+    public Item() {
+    }
     public Item(String name) {
         this.name = name;
     }
-    public Item() {
+/*
+    public Item(String name, String id) {
+        this.name = name;
+        this.id = id;
     }
-
+*/
     public String getId() {
         return id;
     }

@@ -70,6 +70,12 @@ public class Tracker {
      * сравнивая id с аргументом String id и возвращает найденный Item. Если Item не найден - возвращает null.
      * @return возвращает найденный Item или 0, если значение не найдено.
      */
+    // Упрощаем метод findById на основе метода indexOf
+    public Item findById(String id) {
+        int index = indexOf(id);
+        return index != -1 ? items[index] : null;
+    }
+/*
     public Item findById(String id) {
         Item tmp = null;
         for (int index = 0; index < position; index++) {
@@ -79,6 +85,41 @@ public class Tracker {
             }
         }
         return tmp;
+    }
+*/
+    /**
+     * Метод для поиска заявки по id.
+     * private int indexOf(String id) возвращает index записи совпадающей с id. Или -1, если нет совпадений.
+     * @return rsl
+     */
+    private int indexOf(String id) {
+        int rsl = -1;
+        for (int index = 0; index < position; index++) {
+            if (items[index].getId().equals(id)) {
+                rsl = index;
+                break;
+            }
+        }
+        return rsl;
+    }
+
+    /**
+     * Метод для замены заявки.
+     * public boolean replace(String id, Item item) находит заявку по id и дальше в этой заявке заменяет запись,
+     * оставляя старый id. Если id не найден метод возвращает false и сообщение об этом.
+     * @return result
+     */
+    public boolean replace(String id, Item item) {
+        int index = indexOf(id);
+        boolean result = true;
+        if (index != -1) {
+            item.setId(id);
+            items[index] = item;
+        } else {
+            result = false;
+            System.out.println("Записи с данным id не найдено");
+        }
+        return result;
     }
 
     public Item[] getItems() {
