@@ -128,15 +128,13 @@ public class Tracker {
      * @return result
      */
     public boolean delete(String id) {
-        boolean result = true;
+        boolean result = false;
         int index = indexOf(id);
         if (index != -1) {
+            result = true;
             System.arraycopy(items, (index + 1), items, index, (position - index));
             items[position - 1] = null;
             position--;
-        } else {
-            result = false;
-            System.out.println("Записи с данным id не найдено");
         }
         return result;
     }
