@@ -111,13 +111,11 @@ public class Tracker {
      */
     public boolean replace(String id, Item item) {
         int index = indexOf(id);
-        boolean result = true;
+        boolean result = false;
         if (index != -1) {
+            result = true;
             item.setId(id);
             items[index] = item;
-        } else {
-            result = false;
-            System.out.println("Записи с данным id не найдено");
         }
         return result;
     }
