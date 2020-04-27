@@ -4,10 +4,9 @@ import java.util.Scanner;
 
 public class StartUI {
     public void init(Scanner scanner, Tracker tracker) {
-        boolean run = false;
+        boolean run = true;
         while (run) {
             this.showMenu();
-            System.out.print("Select: ");
             int select = Integer.valueOf(scanner.nextLine());
             if (select == 0) {                                          //+
                 System.out.println("=== Create a new Item ====");
@@ -15,9 +14,13 @@ public class StartUI {
                 String name = scanner.nextLine();
                 Item item = new Item(name);
                 tracker.add(item);
+                System.out.println("Record created");
             } else if (select == 1) {                                    //+
                 System.out.println("==== Show all items ====");
-                System.out.println(tracker.findAll());
+                Item[] tmp = tracker.findAll();
+                for (int i = 0; i < tmp.length; i++) {
+                    System.out.println(tmp[i]);
+                }
             } else if (select == 2) {                                    //+
                 System.out.println("==== Edit item ====");
                 System.out.print("Enter id: ");
@@ -43,12 +46,17 @@ public class StartUI {
                 System.out.println("==== Find item by Id ====");
                 System.out.print("Enter id: ");
                 String nameId = scanner.nextLine();
-                tracker.findById(nameId);                                //+
-            } else if (select == 5) {
+                tracker.findById(nameId);
+                if (tracker.findById(nameId) == null) {
+                    System.out.println("ID not found");
+                }
+            } else if (select == 5) {                                    //+
                 System.out.println("==== Find items by name ====");
                 System.out.print("Enter name: ");
                 String name = scanner.nextLine();
-                tracker.findByName(name);
+                for (int i = 0; i < tracker.findByName(name).length; i++) {
+                   System.out.println(tracker.findByName(name)[i]);
+                }
             } else if (select == 6) {                                   //+
                 System.out.println("==== Exit Program ====");
                 run = false;
@@ -57,6 +65,7 @@ public class StartUI {
     }
 
     private void showMenu() {
+        System.out.println(" ");
         System.out.println("Menu.");
         System.out.println("0. Add new Item");
         System.out.println("1. Show all items");
