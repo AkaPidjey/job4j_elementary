@@ -17,9 +17,13 @@ public class StartUI {
                 System.out.println("Record created");
             } else if (select == 1) {                                    //+
                 System.out.println("==== Show all items ====");
-                Item[] tmp = tracker.findAll();
-                for (int i = 0; i < tmp.length; i++) {
-                    System.out.println(tmp[i]);
+                Item[] temp = tracker.findAll();
+                if (temp.length == 0) {
+                    System.out.println("No records");
+                }
+
+                for (int i = 0; i < temp.length; i++) {
+                    System.out.println(temp[i]);
                 }
             } else if (select == 2) {                                    //+
                 System.out.println("==== Edit item ====");
@@ -45,17 +49,20 @@ public class StartUI {
             } else if (select == 4) {                                    //+
                 System.out.println("==== Find item by Id ====");
                 System.out.print("Enter id: ");
-                String nameId = scanner.nextLine();
-                tracker.findById(nameId);
-                if (tracker.findById(nameId) == null) {
+                String id = scanner.nextLine();
+                Item tempid = tracker.findById(id);
+                if (tempid == null) {
                     System.out.println("ID not found");
+                } else {
+                    System.out.println(tempid);
                 }
             } else if (select == 5) {                                    //+
                 System.out.println("==== Find items by name ====");
                 System.out.print("Enter name: ");
                 String name = scanner.nextLine();
-                for (int i = 0; i < tracker.findByName(name).length; i++) {
-                   System.out.println(tracker.findByName(name)[i]);
+                Item[] tempName = tracker.findByName(name);
+                for (int i = 0; i < tempName.length; i++) {
+                   System.out.println(tempName[i]);
                 }
             } else if (select == 6) {                                   //+
                 System.out.println("==== Exit Program ====");
