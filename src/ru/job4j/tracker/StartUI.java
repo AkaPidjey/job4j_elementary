@@ -1,77 +1,93 @@
 package ru.job4j.tracker;
 
-//import java.util.Scanner; разрываем связь и вводим интерфейс
 /**
  * Вместо вызова scanner.nextLine() написать input.askStr(msg),
  * где msg - это сообщение, которое вы хотели бы вывести пользователю перед его вводом, например "Enter id: ".
  */
 
 public class StartUI {
-    public void init(Input input, Tracker tracker) { //(Scanner scanner, Tracker tracker)
+    public void init(Input input, Tracker tracker) {
         boolean run = true;
         while (run) {
             this.showMenu();
             int select = Integer.valueOf(input.askStr("Select:"));
             if (select == 0) {
-                System.out.println("=== Create a new Item ====");
-            //    System.out.print("Enter name: ");
-                String name = input.askStr("Enter name: ");
-                Item item = new Item(name);
-                tracker.add(item);
-                System.out.println("Record created");
+                StartUI.createItem(input, tracker);
             } else if (select == 1) {
-                System.out.println("==== Show all items ====");
-                Item[] temp = tracker.findAll();
-                if (temp.length == 0) {
-                    System.out.println("No records");
-                }
-
-                for (int i = 0; i < temp.length; i++) {
-                    System.out.println(temp[i]);
-                }
+                StartUI.showItems(input, tracker);
             } else if (select == 2) {
-                System.out.println("==== Edit item ====");
-            //    System.out.print("Enter id: ");
-                String nameId = input.askStr("Enter id: ");
-            //    System.out.print("Enter replays name: ");
-                String nameNew = input.askStr("Enter replays name: ");
-                Item item = new Item(nameNew);
-                if (tracker.replace(nameId, item)) {
-                    System.out.print("Completed");
-                } else {
-                    System.out.print("Not completed");
-                }
+                StartUI.editItem(input, tracker);
             } else if (select == 3) {
-                System.out.println("==== Delete item ====");
-            //    System.out.print("Enter id: ");
-                String nameId = input.askStr("Enter id: ");
-                if (tracker.delete(nameId)) {
-                    System.out.print("Completed");
-                } else {
-                    System.out.print("Not completed");
-                }
+                StartUI.deleteItem(input, tracker);
             } else if (select == 4) {
-                System.out.println("==== Find item by Id ====");
-            //    System.out.print("Enter id: ");
-                String id = input.askStr("Enter id: ");
-                Item tempid = tracker.findById(id);
-                if (tempid == null) {
-                    System.out.println("ID not found");
-                } else {
-                    System.out.println(tempid);
-                }
+                StartUI.findItemById(input, tracker);
             } else if (select == 5) {
-                System.out.println("==== Find items by name ====");
-            //    System.out.print("Enter name: ");
-                String name = input.askStr("Enter name: ");
-                Item[] tempName = tracker.findByName(name);
-                for (int i = 0; i < tempName.length; i++) {
-                   System.out.println(tempName[i]);
-                }
+                StartUI.findItemByName(input, tracker);
             } else if (select == 6) {
                 System.out.println("==== Exit Program ====");
                 run = false;
             }
+        }
+    }
+
+    public  static void createItem(Input input, Tracker tracker) {
+        System.out.println("=== Create a new Item ====");
+        String name = input.askStr("Enter name: ");
+        Item item = new Item(name);
+        tracker.add(item);
+        System.out.println("Record created");
+    }
+
+    public  static void showItems(Input input, Tracker tracker) {
+        System.out.println("==== Show all items ====");
+        Item[] temp = tracker.findAll();
+        if (temp.length == 0) {
+            System.out.println("No records");
+        }
+        for (int i = 0; i < temp.length; i++) {
+            System.out.println(temp[i]);
+        }
+    }
+
+    public  static void editItem(Input input, Tracker tracker) {
+        System.out.println("==== Edit item ====");
+        String nameId = input.askStr("Enter id: ");
+        String nameNew = input.askStr("Enter replays name: ");
+        Item item = new Item(nameNew);
+        if (tracker.replace(nameId, item)) {
+            System.out.print("Completed");
+        } else {
+            System.out.print("Not completed");
+        }
+    }
+
+    public  static void deleteItem(Input input, Tracker tracker) {
+        System.out.println("==== Delete item ====");
+        String nameId = input.askStr("Enter id: ");
+        if (tracker.delete(nameId)) {
+            System.out.print("Completed");
+        } else {
+            System.out.print("Not completed");
+        }
+    }
+
+    public  static void findItemById(Input input, Tracker tracker) {
+        System.out.println("==== Find item by Id ====");
+        String id = input.askStr("Enter id: ");
+        Item tempid = tracker.findById(id);
+        if (tempid == null) {
+            System.out.println("ID not found");
+        } else {
+            System.out.println(tempid);
+        }
+    }
+
+    public  static void findItemByName(Input input, Tracker tracker) {
+        System.out.println("==== Find items by name ====");
+        String name = input.askStr("Enter name: ");
+        Item[] tempName = tracker.findByName(name);
+        for (int i = 0; i < tempName.length; i++) {
+            System.out.println(tempName[i]);
         }
     }
 
@@ -85,7 +101,6 @@ public class StartUI {
         System.out.println("4. Find item by Id");
         System.out.println("5. Find items by name");
         System.out.println("6. Exit Program");
-    //    System.out.println("Select:");
     }
 
     public static void main(String[] args) {
