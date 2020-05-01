@@ -1,7 +1,7 @@
 package ru.job4j.tracker;
 
 public class ValidateInput extends ConsoleInput {
-
+/*
     @Override
     public int askInt(String question) {
         boolean invalid = true;
@@ -32,5 +32,5 @@ public class ValidateInput extends ConsoleInput {
             }
         } while (invalid);
         return value;
-    }
+    }   */
 }

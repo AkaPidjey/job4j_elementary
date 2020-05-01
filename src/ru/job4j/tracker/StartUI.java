@@ -6,13 +6,13 @@ package ru.job4j.tracker;
  */
 
 public class StartUI {
-    public void init(Input input, Tracker tracker, UserAction[] actions) {
+    public void init(Input input, Tracker tracker) {
         boolean run = true;
         while (run) {
-            this.showMenu(actions);
-            int select = input.askInt("Select", actions.length);  //Integer.valueOf(input.askStr("Select:"));
-            UserAction action = actions[select];
-            run = action.execute(input, tracker);
+            this.showMenu();
+            int select =Integer.valueOf(input.askStr("Select:"));
+        /*    UserAction action = actions[select];
+            run = action.execute(input, tracker);   */
             if (select == 0) {
                 StartUI.createItem(input, tracker);
             } else if (select == 1) {
@@ -107,9 +107,10 @@ public class StartUI {
     }
 
     public static void main(String[] args) {
-        Input validate = new ValidateInput();
+        Input input = new ConsoleInput();
         Tracker tracker = new Tracker();
-        UserAction[] actions = {new CreateAction()};
-        new StartUI().init(validate, tracker, actions);
+        new StartUI().init(input, tracker);
+    /*    UserAction[] actions = {new CreateAction()};
+        new StartUI().init(validate, tracker, actions);   */
     }
 }

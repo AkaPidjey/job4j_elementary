@@ -15,7 +15,7 @@ public class ConsoleInput implements Input {
     public int askInt(String question) {
         return Integer.valueOf(askStr(question));
     }
-
+/*
     @Override
     public int askInt(String question, int max) {
         int select = askInt(question);
@@ -25,4 +25,6 @@ public class ConsoleInput implements Input {
             throw new IllegalStateException(String.format("Out of about %s > [0, %s]", select, max));
         }
     }
+
+ */
 }
