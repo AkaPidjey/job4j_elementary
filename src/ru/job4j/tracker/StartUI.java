@@ -52,12 +52,12 @@ public class StartUI {
     }
 
     public  static void replaceItem(Input input, Tracker tracker) {
-        System.out.println("==== Edit item ====");
-        String nameId = input.askStr("Enter id: ");
-        String nameNew = input.askStr("Enter replays name: ");
-        Item item = new Item(nameNew);
-        item.setId(nameId);
-        if (tracker.replace(nameId, item)) {
+        System.out.println("==== Update item ====");
+        String id = input.askStr("Enter id: ");
+        String name = input.askStr("Enter a new name of item: ");
+        Item item = new Item(name);
+        item.setId(id);
+        if (tracker.replace(id, item)) {
             System.out.print("Completed");
         } else {
             System.out.print("Not completed");
