@@ -1,7 +1,7 @@
 package ru.job4j.tracker;
 
 import org.junit.Test;
-import ru.job4j.pojo.License;
+
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;

@@ -30,7 +30,7 @@ public class StartUITest {
         assertThat(replaced.getName(), is("replaced item"));
     }
 
-    @Test
+/*    @Test
     public void whenDeleteItem() {
         Tracker tracker = new Tracker();
         Item item = new Item("new item");
@@ -40,4 +40,6 @@ public class StartUITest {
         Item delete = tracker.findById(item.getId());
         assertThat(tracker.findById(item.getId()), is(nullValue()));
     }
+    
+ */
 }

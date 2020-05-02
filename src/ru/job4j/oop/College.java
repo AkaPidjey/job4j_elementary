@@ -4,6 +4,6 @@ public class College {
     public static void main(String[] args) {
         Freshman fresh = new Freshman();
         Student stud = fresh;
-        Object obj = fresh;
+        java.lang.Object obj = fresh;
     }
 }
