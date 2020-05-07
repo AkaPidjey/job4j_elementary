@@ -6,7 +6,9 @@ public class UserStore {
         for (int i = 0; i < users.length; i++) {
             if (users[i].equals(login)) {
                 result = users[i];
-            } else {
+                break;
+            }
+            if (result == null) {
                 throw new UserNotFoundException("User not found");
             }
         }
@@ -14,17 +16,15 @@ public class UserStore {
     }
 
     public static boolean validate(User user) throws UserInvalidException {
-        boolean result = false;
-        if (user.isValid()) {
-            result = true;
-        } else {
+    //    boolean result = false;
+        if (!user.isValid()) {
             throw new UserInvalidException("User not valid");
         }
 
         if (user.getUsername().length() < 3) {
             throw new UserInvalidException("Number of characters less than 3");
         }
-        return result;
+        return true;
     }
 
     public static void main(String[] args) {
