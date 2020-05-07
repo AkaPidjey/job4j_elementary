@@ -15,11 +15,5 @@ public class FindByNameAction implements UserAction {
         return true;
     }
 }
-/*
-        Item[] tempName = tracker.findByName(name);
-        for (int i = 0; i < tempName.length; i++) {
-            System.out.println(tempName[i]);
-        }
 
- */
 

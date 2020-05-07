@@ -75,18 +75,7 @@ public class Tracker {
         int index = indexOf(id);
         return index != -1 ? items[index] : null;
     }
-/*
-    public Item findById(String id) {
-        Item tmp = null;
-        for (int index = 0; index < position; index++) {
-            if (items[index].getId().equals(id)) {
-                tmp = items[index];
-                break;
-            }
-        }
-        return tmp;
-    }
-*/
+
     /**
      * Метод для поиска заявки по id.
      * private int indexOf(String id) возвращает index записи совпадающей с id. Или -1, если нет совпадений.
