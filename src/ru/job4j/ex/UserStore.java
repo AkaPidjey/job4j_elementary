@@ -8,10 +8,11 @@ public class UserStore {
                 result = users[i];
                 break;
             }
-            if (result == null) {
-                throw new UserNotFoundException("User not found");
-            }
         }
+        if (result == null) {
+            throw new UserNotFoundException("User not found");
+        }
+
         return result;
     }
 
